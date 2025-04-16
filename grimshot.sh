@@ -13,7 +13,7 @@ function copy_only(){
     wl-copy < $output
     rm $output
 
-    notify-send "Grimshot" "Screenshot <i>$name</i> has been made using:\n<b>Copy only mode</b>"
+    notify-send "Grimshot" "Screenshot has been made using:\n<b>Copy only mode</b>"
     exit
 }
 
@@ -26,8 +26,12 @@ function normalScreenshot() {
     grim $output
     wl-copy < $output
 
-    notify-send "Grimshot" "Screenshot <i>$name</i> has been made"
+    notify-send "Grimshot" "Screenshot <i>$name</i> has been made and copied to clipboard"
 }
+
+if [ $1 == "--copy_only" ]; then
+    copy_only
+fi
 
 choice=$(printf "$(date +"%d-%m-%Y_%H:%M").$default_extention\nCopy only\n" | rofi -dmenu -p "Grimshot")
 

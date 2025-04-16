@@ -17,9 +17,6 @@ function copy_only(){
 }
 
 function normalScreenshot() {
-    if [ "$name" == ".$default_extention" ]; then
-        exit
-    fi
     output="$directory/$name"
     
     grim $output
@@ -32,12 +29,13 @@ if [ "$1" == "--copy_only" ]; then
     copy_only
 fi
 
-choice=$(printf "$(date +"%d-%m-%Y_%H:%M").$default_extention\nCopy only\n" | rofi -dmenu -p "Grimshot")
+choice=$(printf "$(date +"%d-%m-%Y_%H:%M").$default_extention\nCopy only\nCustom name" | rofi -dmenu -p "Grimshot")
 
 case "$choice" in
-  "$(date +"%d-%m-%Y_%H:%M").$default_extention") name="$(date +"%d-%m-%Y_%H:%M").png" && normalScreenshot;;
-  "Copy only") copy_only ;;
-  *) name=$choice.$default_extention;;
+    "$(date +"%d-%m-%Y_%H:%M").$default_extention") name="$(date +"%d-%m-%Y_%H:%M").png" && normalScreenshot;;
+    "Copy only") copy_only ;;
+    "Custom name") name=$(rofi -dmenu -p "Choose screenshot name").$default_extention;;
+    *) exit
 esac
 
 normalScreenshot

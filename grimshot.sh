@@ -6,12 +6,11 @@ directory="$HOME/Images/Screenshots/Grimshot"
 
 function copy_only(){
 
-    name="tmp.png"
-    output="$directory/$name"
+    name="$(date +"%d-%m-%Y_%H:%M").$default_extention"
+    output="/tmp/$name"
     
     grim $output
     wl-copy < $output
-    rm $output
 
     notify-send "Grimshot" "Screenshot has been made using:\n<b>Copy only mode</b>"
     exit

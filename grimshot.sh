@@ -28,7 +28,7 @@ function normalScreenshot() {
     notify-send "Grimshot" "Screenshot <i>$name</i> has been made and copied to clipboard"
 }
 
-if [ $1 == "--copy_only" ]; then
+if [ "$1" == "--copy_only" ]; then
     copy_only
 fi
 

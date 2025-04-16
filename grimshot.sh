@@ -29,12 +29,12 @@ if [ "$1" == "--copy_only" ]; then
     copy_only
 fi
 
-choice=$(printf "$(date +"%d-%m-%Y_%H:%M").$default_extention\nCopy only\nCustom name" | rofi -dmenu -p "Grimshot")
+choice=$(printf "$(date +"%d-%m-%Y_%H:%M").$default_extention\nCustom name\nCopy only" | rofi -dmenu -p "Grimshot")
 
 case "$choice" in
     "$(date +"%d-%m-%Y_%H:%M").$default_extention") name="$(date +"%d-%m-%Y_%H:%M").png" && normalScreenshot;;
+    "Custom name") name=$(rofi -dmenu -p "Screenshot name").$default_extention;;
     "Copy only") copy_only ;;
-    "Custom name") name=$(rofi -dmenu -p "Choose screenshot name").$default_extention;;
     *) exit
 esac
 

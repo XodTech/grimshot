@@ -11,7 +11,7 @@ sh grimshot.sh
 ./grimshot.sh
 ```
 - With `--copy_only flag`
-> This mode takes temporary screenshot and automatically moves it to clipboard:
+> This mode takes temporary screenshot and automatically moves it to clipboard without opening the rofi menu:
 
 ```bash
 sh grimshot.sh --copy_only

@@ -1,9 +1,8 @@
 #!/bin/sh
 
-
 default_extention="png"
 directory="$HOME/Images/Screenshots/Grimshot"
-
+# TODO:Make automatical check for Images/... or Pictures/... and automatical mkdir
 function copy_only(){
 
     name="$(date +"%d-%m-%Y_%H:%M").$default_extention"
@@ -32,7 +31,7 @@ fi
 choice=$(printf "$(date +"%d-%m-%Y_%H:%M").$default_extention\nCustom name\nCopy only" | rofi -dmenu -p "Grimshot")
 
 case "$choice" in
-    "$(date +"%d-%m-%Y_%H:%M").$default_extention") name="$(date +"%d-%m-%Y_%H:%M").png" && normalScreenshot;;
+    "$(date +"%d-%m-%Y_%H:%M").$default_extention") name="$(date +"%d-%m-%Y_%H:%M").png";;
     "Custom name") name=$(rofi -dmenu -p "Screenshot name").$default_extention;;
     "Copy only") copy_only ;;
     *) exit

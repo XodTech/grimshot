@@ -8,6 +8,7 @@ function copy_only(){
     name="$(date +"%d-%m-%Y_%H:%M").$default_extention"
     output="/tmp/$name"
     
+    sleep 0.7
     grim $output
     wl-copy < $output
 
@@ -18,6 +19,7 @@ function copy_only(){
 function normalScreenshot() {
     output="$directory/$name"
     
+    sleep 0.7
     grim $output
     wl-copy < $output
 

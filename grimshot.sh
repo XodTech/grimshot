@@ -18,6 +18,7 @@ function copy_only(){
 function normalScreenshot() {
     output="$directory/$name"
     
+    sleep 0.7
     grim $output
     wl-copy < $output
 
@@ -33,7 +34,7 @@ choice=$(printf "$(date +"%d-%m-%Y_%H:%M").$default_extention\nCustom name\nCopy
 case "$choice" in
     "$(date +"%d-%m-%Y_%H:%M").$default_extention") name="$(date +"%d-%m-%Y_%H:%M").png";;
     "Custom name") name=$(rofi -dmenu -p "Screenshot name").$default_extention;;
-    "Copy only") copy_only ;;
+    "Copy only") sleep 0.7 && copy_only ;;
     *) exit
 esac
 
